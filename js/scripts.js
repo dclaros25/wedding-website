@@ -184,23 +184,23 @@ $(document).ready(function () {
         },
         data: {
             // Event title
-            title: "Ram and Antara's Wedding",
+            title: "Boda de Claudia y Danilo",
 
             // Event start date
-            start: new Date('Nov 27, 2017 10:00'),
+            start: new Date('Mar 30, 2024 15:00'),
 
             // Event duration (IN MINUTES)
             // duration: 120,
 
             // You can also choose to set an end time
             // If an end time is set, this will take precedence over duration
-            end: new Date('Nov 29, 2017 00:00'),
+            end: new Date('Mar 30, 2024 20:00'),
 
             // Event Address
-            address: 'ITC Fortune Park Hotel, Kolkata',
+            address: 'Cajamarca El Volcan, San Salvador',
 
             // Event Description
-            description: "We can't wait to see you on our big day. For any queries or issues, please contact Mr. Amit Roy at +91 9876543210."
+            description: "No podemos esperar a verte en nuestro gran día. Para cualquier consulta o problema, comuníquese con Claudia Alvarez al +1 4243869080."
         }
     });
 
