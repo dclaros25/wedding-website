@@ -219,7 +219,6 @@ $(document).ready(function () {
     
         var inviteCodeMappings = {
             'e32476e7f7d34366c1dbfd4a71a40dc7': 2,
-            'b3af86a0243f6fff91ec7fab2d165a7f': 2,
             'f2bd6d944fbaf3c3d8485cf272776073': 3,
             'aa28d196c8c63254819d0d9ad71398fc': 4,
             '8ea1b6c375343e0d058af3230c231e1b': 5
