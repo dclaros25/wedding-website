@@ -214,19 +214,23 @@ $(document).ready(function () {
     
         var userEnteredCode = $('#invite_code').val(); // Get the user-entered invite code
         var encryptedCode = MD5(userEnteredCode); // Encrypt the user-entered invite code using MD5
-    
+        
+        console.log("Encrypted Code:", encryptedCode);
+
         $('#alert-wrapper').html(alert_markup('info', '<strong>Un segundo!</strong> Estamos guardando tus detalles.'));
     
         var inviteCodeMappings = {
             'e32476e7f7d34366c1dbfd4a71a40dc7': 2,
-            'f2bd6d944fbaf3c3d8485cf272776073': 3,
-            'aa28d196c8c63254819d0d9ad71398fc': 4,
-            '8ea1b6c375343e0d058af3230c231e1b': 5
+            '60f869db3f9961a36b5a3c7aa7512bc6': 3,
+            '876f605b013b539ab4d62e0a02a66548': 4,
+            '72a036e337c21c72353b2bcbab2ddc8b': 5
         };
     
         if (inviteCodeMappings.hasOwnProperty(encryptedCode)) {
             var maxGuests = inviteCodeMappings[encryptedCode];
+            console.log("Max Guests:", maxGuests);
             var selectedExtras = parseInt($("select[name='extras']").val());
+            console.log("Selected Extras:", selectedExtras);
             if (selectedExtras <= maxGuests) {
                 // Code and guest count are valid, proceed with form submission
                 $.post("https://script.google.com/macros/s/AKfycbwzy71RARLev-YCEwQ5WTaz-0E0iFof9IbqSbTAO1PvJpfyB01SAj-TD1CCqzdRC14/exec", data)
