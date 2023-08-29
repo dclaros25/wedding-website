@@ -211,32 +211,45 @@ $(document).ready(function () {
     $('#rsvp-form').on('submit', function (e) {
         e.preventDefault();
         var data = $(this).serialize();
-
+    
+        var inviteCode = $('#invite_code').val();
+        var selectedExtras = parseInt($("select[name='extras']").val());
+    
         $('#alert-wrapper').html(alert_markup('info', '<strong>Un segundo!</strong> Estamos guardando tus detalles.'));
-
-        if (MD5($('#invite_code').val()) !== 'b0e53b10c1f55ede516b240036b88f40'
-            && MD5($('#invite_code').val()) !== '2ac7f43695eb0479d5846bb38eec59cc') {
-            $('#alert-wrapper').html(alert_markup('danger', '<strong>Lo sentimos!</strong> Tu codigo de invitación es incorrecto.'));
+    
+        var inviteCodeMappings = {
+            'b3af86a0243f6fff91ec7fab2d165a7f': 2,
+            'f2bd6d944fbaf3c3d8485cf272776073': 3,
+            'aa28d196c8c63254819d0d9ad71398fc': 4,
+            '8ea1b6c375343e0d058af3230c231e1b': 5
+        };
+    
+        if (inviteCodeMappings.hasOwnProperty(inviteCode)) {
+            var maxGuests = inviteCodeMappings[inviteCode];
+            if (selectedExtras <= maxGuests) {
+                // Code and guest count are valid, proceed with form submission
+                $.post("https://script.google.com/macros/s/AKfycbwzy71RARLev-YCEwQ5WTaz-0E0iFof9IbqSbTAO1PvJpfyB01SAj-TD1CCqzdRC14/exec", data)
+                    .done(function (data) {
+                        console.log(data);
+                        if (data.result === "error") {
+                            $('#alert-wrapper').html(alert_markup('danger', data.message));
+                        } else {
+                            $('#alert-wrapper').html('');
+                            $('#rsvp-modal').modal('show');
+                        }
+                    })
+                    .fail(function (data) {
+                        console.log(data);
+                        $('#alert-wrapper').html(alert_markup('danger', '<strong>Lo sentimos!</strong> Tenemos problemas con el servidor.'));
+                    });
+            } else {
+                $('#alert-wrapper').html(alert_markup('danger', '<strong>Lo sentimos!</strong> Has excedido el máximo número de acompañantes permitido.'));
+            }
         } else {
-            $.post("https://script.google.com/macros/s/AKfycbyxpmRVFukkVp31PFMGSNxd43UYCiBOqVQw3V-i22zkNMY7INp4B06EPQwks6BAy6w/exec", data)
-                .done(function (data) {
-                    console.log(data);
-                    if (data.result === "error") {
-                        $('#alert-wrapper').html(alert_markup('danger', data.message));
-                    } else {
-                        $('#alert-wrapper').html('');
-                        $('#rsvp-modal').modal('show');
-                    }
-                })
-                .fail(function (data) {
-                    console.log(data);
-                    $('#alert-wrapper').html(alert_markup('danger', '<strong>Lo sentimos!</strong> Tenemos problemas con el servidor.'));
-                });
+            $('#alert-wrapper').html(alert_markup('danger', '<strong>Lo sentimos!</strong> Tu codigo de invitación es incorrecto.'));
         }
     });
-
 });
-
 /********************** Extras **********************/
 
 // Google map
