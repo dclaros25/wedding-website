@@ -208,11 +208,12 @@ $(document).ready(function () {
 
 
     /********************** RSVP **********************/
-    ('#rsvp-form').on('submit', function (e) {
+    $('#rsvp-form').on('submit', function (e) {
         e.preventDefault();
         var data = $(this).serialize();
     
-        var inviteCode = MD5($('#invite_code').val()); // Encrypt the invite code using MD5
+        var userEnteredCode = $('#invite_code').val(); // Get the user-entered invite code
+        var encryptedCode = MD5(userEnteredCode); // Encrypt the user-entered invite code using MD5
     
         $('#alert-wrapper').html(alert_markup('info', '<strong>Un segundo!</strong> Estamos guardando tus detalles.'));
     
@@ -223,8 +224,8 @@ $(document).ready(function () {
             '8ea1b6c375343e0d058af3230c231e1b': 5
         };
     
-        if (inviteCodeMappings.hasOwnProperty(inviteCode)) {
-            var maxGuests = inviteCodeMappings[inviteCode];
+        if (inviteCodeMappings.hasOwnProperty(encryptedCode)) {
+            var maxGuests = inviteCodeMappings[encryptedCode];
             var selectedExtras = parseInt($("select[name='extras']").val());
             if (selectedExtras <= maxGuests) {
                 // Code and guest count are valid, proceed with form submission
