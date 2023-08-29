@@ -220,10 +220,10 @@ $(document).ready(function () {
         $('#alert-wrapper').html(alert_markup('info', '<strong>Un segundo!</strong> Estamos guardando tus detalles.'));
     
         var inviteCodeMappings = {
-            'e32476e7f7d34366c1dbfd4a71a40dc7': 2,
-            '60f869db3f9961a36b5a3c7aa7512bc6': 3,
-            '876f605b013b539ab4d62e0a02a66548': 4,
-            '72a036e337c21c72353b2bcbab2ddc8b': 5
+            'b3af86a0243f6fff91ec7fab2d165a7f': 2,
+            'f2bd6d944fbaf3c3d8485cf272776073': 3,
+            'aa28d196c8c63254819d0d9ad71398fc': 4,
+            '8ea1b6c375343e0d058af3230c231e1b': 5
         };
     
         if (inviteCodeMappings.hasOwnProperty(encryptedCode)) {
