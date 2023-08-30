@@ -255,7 +255,7 @@ $(document).ready(function () {
                         $('#alert-wrapper').html(alert_markup('danger', '<strong>Lo sentimos!</strong> Tenemos problemas con el servidor.'));
                     });
             } else {
-                $('#alert-wrapper').html(alert_markup('danger', '<strong>Lo sentimos!</strong> Has excedido el máximo número de acompañantes permitido.'));
+                $('#alert-wrapper').html(alert_markup('danger', '<strong>Lo sentimos!</strong> Has excedido el máximo número de invitados.'));
             }
         } else {
             $('#alert-wrapper').html(alert_markup('danger', '<strong>Lo sentimos!</strong> Tu codigo de invitación es incorrecto.'));
