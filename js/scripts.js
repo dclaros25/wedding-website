@@ -220,11 +220,12 @@ $(document).ready(function () {
         $('#alert-wrapper').html(alert_markup('info', '<strong>Un segundo!</strong> Estamos guardando tus detalles.'));
     
         var inviteCodeMappings = {
-            'b0e53b10c1f55ede516b240036b88f40': 1,
-            'b3af86a0243f6fff91ec7fab2d165a7f': 2,
-            'f2bd6d944fbaf3c3d8485cf272776073': 3,
-            'aa28d196c8c63254819d0d9ad71398fc': 4,
-            '8ea1b6c375343e0d058af3230c231e1b': 5
+            '34ff90cb48d2fc4f3848118676830d25': 0,
+            '1f7a8bcfce963db75918814205fe49b6': 1,
+            'c97cb92dabf8a97f9400e4226b0cc4d7': 2,
+            '4785f5dbd941eb3206bcb38a8575139a': 3,
+            '32fb2dded2f9cbf80e14489fc0808f71': 4,
+            'f358f587eac0aa07117efc8846b66501': 5
         };
     
         if (inviteCodeMappings.hasOwnProperty(encryptedCode)) {
@@ -239,7 +240,7 @@ $(document).ready(function () {
             
             if (!isNaN(selectedExtras) && selectedExtras <= maxGuests) {
                 // Code and guest count are valid, proceed with form submission
-                $.post("https://script.google.com/macros/s/AKfycbxAroNj1A2uGOa9c8Zl_jKjKd7nCimwD8Tr-XMp4p-RS7bV_Kb2oN_fKplg57BnsDY/exec", data)
+                $.post("https://script.google.com/macros/s/AKfycbzKeXAecvk9VXjcVqF07SOfcXFXJhSw_ps0NBCaoxXCl2-aEj2BgRYJRepBGMChv_I/exec", data)
                     .done(function (data) {
                         console.log(data);
                         if (data.result === "error") {
