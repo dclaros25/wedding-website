@@ -211,15 +211,16 @@ $(document).ready(function () {
     $('#rsvp-form').on('submit', function (e) {
         e.preventDefault();
         var data = $(this).serialize();
-    
+        
         var userEnteredCode = $('#invite_code').val(); // Get the user-entered invite code
         var encryptedCode = MD5(userEnteredCode); // Encrypt the user-entered invite code using MD5
+    
+        console.log("Encrypted Code:", encryptedCode); // Log the encrypted code
         
-        console.log("Encrypted Code:", encryptedCode);
-
         $('#alert-wrapper').html(alert_markup('info', '<strong>Un segundo!</strong> Estamos guardando tus detalles.'));
     
         var inviteCodeMappings = {
+            'b0e53b10c1f55ede516b240036b88f40': 1,
             'b3af86a0243f6fff91ec7fab2d165a7f': 2,
             'f2bd6d944fbaf3c3d8485cf272776073': 3,
             'aa28d196c8c63254819d0d9ad71398fc': 4,
@@ -228,12 +229,17 @@ $(document).ready(function () {
     
         if (inviteCodeMappings.hasOwnProperty(encryptedCode)) {
             var maxGuests = inviteCodeMappings[encryptedCode];
-            console.log("Max Guests:", maxGuests);
-            var selectedExtras = parseInt($("select[name='extras']").val());
-            console.log("Selected Extras:", selectedExtras);
-            if (selectedExtras <= maxGuests) {
+    
+            console.log("Max Guests:", maxGuests); // Log the max guests
+            
+            var selectedExtras = parseInt($("input[name='extras']").val());
+    
+            console.log("Selected Extras (Before Parsing):", $("input[name='extras']").val()); // Log the raw value
+            console.log("Parsed Selected Extras:", selectedExtras); // Log the parsed value
+            
+            if (!isNaN(selectedExtras) && selectedExtras <= maxGuests) {
                 // Code and guest count are valid, proceed with form submission
-                $.post("https://script.google.com/macros/s/AKfycbwzy71RARLev-YCEwQ5WTaz-0E0iFof9IbqSbTAO1PvJpfyB01SAj-TD1CCqzdRC14/exec", data)
+                $.post("https://script.google.com/macros/s/AKfycbxAroNj1A2uGOa9c8Zl_jKjKd7nCimwD8Tr-XMp4p-RS7bV_Kb2oN_fKplg57BnsDY/exec", data)
                     .done(function (data) {
                         console.log(data);
                         if (data.result === "error") {
