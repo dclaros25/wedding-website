@@ -57,7 +57,7 @@
     <link rel="stylesheet" href="css/styles.min.css">
     <link rel="stylesheet" href="css/queries.css">
     <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
+    <script src="https://kit.fontawesome.com/0960316077.js" crossorigin="anonymous"></script>
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body id="top">
@@ -635,13 +635,58 @@
                                                                 required>
                             </div>
                         </div>
+                    
                     </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="form-input-group">
+                                <i class="fa fa-cow"></i><input name="doneness" class=""
+                                                                placeholder="Termino de Carne">
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-md-12" id="alert-wrapper"></div>
                     </div>
                     <button class="btn-fill rsvp-btn">
                         Confirmar!
                     </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="rsvp text-center" id="music">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h3>Que quisieras bailar?</h3>
+                <p>Si te gustaría que sonase una canción o artista en la fiesta dinoslo, intentaremos que la pongan</p>
+                <form id="music-form" class="rsvp-form"
+                      action=""
+                      method="POST">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-music"></i><input name="song" class=""
+                                                                     placeholder="Cancion/Artista"
+                                                                     required lng-tag="song">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <button class="btn-fill rsvp-btn" lng-tag="play">
+                                Agregar a lista
+                            </button>
+                        </div>
+                    </div>
+ 
+                    <div class="row">
+                        <div class="col-md-12" id="alert-wrapper-music"></div>
+                    </div>
+
                 </form>
             </div>
         </div>

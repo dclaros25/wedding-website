@@ -287,6 +287,32 @@ $(document).ready(function () {
         }
     });
 });
+    
+    console.log('music');
+    /********************** MUSIC **********************/
+    $('#music-form').on('submit', function (e) {
+        e.preventDefault();
+    
+        var data = $(this).serialize();
+        $('#alert-wrapper-music').html(alert_markup('info', '<strong>Un momento!</strong> Lo estamos guardando'));
+    
+        $.post('https://script.google.com/macros/s/AKfycbxN3Ob-piTarKsHl4jvoQCv7orXGzr8mLO16s_aQ_CnxieMaujlj2Ywlf6VN3kbaK0/exec', data)
+            .done(function (data) {
+                console.log("Music Form - Server Response:", data);
+                if (data.result === "error") {
+                    $('#alert-wrapper-music').html(alert_markup('danger', data.message));
+                }
+                else {
+                       $('#alert-wrapper-music').html(alert_markup('success', 'Hecho'));
+                }
+            })
+            .fail(function (error) {
+                console.log("Music Form - Server Error:", error);
+                $('#alert-wrapper-music').html(alert_markup('danger', '<strong>Lo sentimos!</strong> Tenemos problemas con el servidor.'));
+            });
+    });
+
+
 /********************** Extras **********************/
 
 // Google map
